@@ -1,12 +1,12 @@
-def even_and_odd(string):
-    sum_even = 0
-    sum_odd = 0
-    for i in string:
+def suma(number):
+    odd_sum = 0
+    even_sum = 0
+    for i in number:
         if int(i) % 2 == 0:
-            sum_even += int(i)
+            even_sum += int(i)
         else:
-            sum_odd += int(i)
-    print(f'Odd sum = {sum_odd}, Even sum = {sum_even}')
+            odd_sum += int(i)
+    print(f'Odd sum = {odd_sum}, Even sum = {even_sum}')
 
 
-even_and_odd(input())
+suma(input())

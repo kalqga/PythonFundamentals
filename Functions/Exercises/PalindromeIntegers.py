@@ -1,4 +1,3 @@
-
 def palindrome(string):
     arr = string.split(', ')
     for i in arr:

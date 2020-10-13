@@ -1,8 +1,6 @@
-def chars(char1, char2):
-    first = ord(char1)
-    last = ord(char2)
-    for i in range(first + 1, last):
+def asci(a, b):
+    for i in range(ord(a) + 1, ord(b)):
         print(chr(i), end=' ')
 
 
-chars(input(), input())
+asci(input(), input())

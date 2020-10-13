@@ -1,15 +1,10 @@
-first_num = int(input())
-second_num = int(input())
-third_num = int(input())
-
-
-def solve(a, b, c):
-    if a > c and b > c:
-        return c
-    elif a > b and c > b:
-        return b
-    elif b > a and c > a:
+def smallest(a, b, c):
+    if a < b and a < c:
         return a
+    elif b < a and b < c:
+        return b
+    elif c < a and c < b:
+        return c
 
 
-print(solve(first_num, second_num, third_num))
+print(smallest(int(input()), int(input()), int(input())))
