@@ -1,14 +1,14 @@
 n = int(input())
 word = input()
-strings = []
+
+arr = []
+fil = []
 
 for i in range(n):
-    current_string = input()
-    strings.append(current_string)
-print(strings)
+    text = input()
+    arr.append(text)
+    if word in text:
+        fil.append(text)
 
-for i in range(len(strings) - 1, -1, -1):
-    element = strings[i]
-    if word not in element:
-        strings.remove(element)
-print(strings)
+print(arr)
+print(fil)

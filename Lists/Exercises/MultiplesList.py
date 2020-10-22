@@ -1,9 +1,6 @@
-first_number = int(input())
-second_number = int(input())
+factor = int(input())
+count = int(input())
 
-numbers = []
+arr = [el for el in range(factor, factor * count + 1, factor)]
 
-for i in range(1, (second_number * first_number) + 1):
-    if i % first_number == 0:
-        numbers.append(i)
-print(numbers)
+print(arr)
