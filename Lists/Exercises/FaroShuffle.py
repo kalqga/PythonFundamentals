@@ -1,23 +1,37 @@
-string = input()
-shuffle = int(input())
+text = input()
+shuffles = int(input())
+cards = text.split()
 
-cards = string.split(' ')
-
-first = cards[0]
-last = cards[len(cards) - 1]
-
+n = 0
+top_card = cards[0]
+bottom_card = cards[-1]
 cards.pop(0)
-cards.pop(len(cards) - 1)
+cards.pop(-1)
 
-for i in range(shuffle):
-    list_left = cards[:len(cards) // 2]
-    list_right = cards[len(cards) // 2:]
-    cards = []
-    for index in range(len(list_left)):
-        cards.append(list_right[index])
-        cards.append(list_left[index])
+middle = len(cards) // 2
 
-cards.append(last)
-cards.insert(0, first)
+while n < shuffles:
 
-print(cards)
+    right = []
+    left = []
+    shuffled_list = []
+
+    for index in range(0, middle):
+        left.append(cards[index])
+
+    for index in range(middle, len(cards)):
+        right.append(cards[index])
+
+    for i in range(0, middle):
+        shuffled_list.append(right[i])
+        shuffled_list.append(left[i])
+
+    cards = shuffled_list.copy()
+
+    n += 1
+
+arr = cards.copy()
+arr.insert(0, top_card)
+arr.insert(len(arr), bottom_card)
+
+print(arr)

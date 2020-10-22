@@ -1,20 +1,18 @@
-import sys
-
-string = input()
+nums = input()
 n = int(input())
 
-numbers = string.split(' ')
+numbers = nums.split()
+nu = 0
 
+arr = []
 
-for i in range(n):
-    min_num = sys.maxsize
-    for ind in numbers:
-        if int(ind) < min_num:
-            min_num = int(ind)
-    numbers.remove(str(min_num))
+for el in numbers:
+    a = int(el)
+    arr.append(a)
 
-sec = []
-for ind in numbers:
-    sec.append(int(ind))
+while nu < n:
+    arr.remove(min(arr))
 
-print(sec)
+    nu += 1
+
+print(arr)
