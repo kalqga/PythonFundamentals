@@ -1,18 +1,26 @@
-n = int(input())
+num = int(input())
+wagons = [0 for _ in range(num)]
 
-wagon = []
+command = input()
 
-for i in range(0, n):
-    wagon.append(int(0))
+while not command == 'End':
+
+    data = command.split()
+
+    if data[0] == 'add':
+        number_of_people = int(data[1])
+        wagons[-1] += number_of_people
+    elif data[0] == 'insert':
+        index = int(data[1])
+        value = int(data[2])
+        wagons[index] += value
+
+    elif data[0] == 'leave':
+        index = int(data[1])
+        value = int(data[2])
+        wagons[index] -= value
+
+    command = input()
 
 
-string = input()
-while string != 'End':
-    string = input()
-    command = string.split(' ')
-
-    if command[0] == 'add':
-        wagon.remove(wagon[n])
-        wagon.append(command[1])
-
-print(wagon)
+print(wagons)

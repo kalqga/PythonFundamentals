@@ -1,48 +1,26 @@
-# INPUT
+num = int(input())
+wagons = [0 for _ in range(num)]
 
-collection_of_items = input().split('|')
-budget = float(input())
+command = input()
 
-####################################################
+while not command == 'End':
 
-# VARIABLES
+    data = command.split()
 
-new_prices = []
-profit = 0.0
+    if data[0] == 'add':
+        number_of_people = int(data[1])
+        wagons[-1] += number_of_people
+    elif data[0] == 'insert':
+        index = int(data[1])
+        value = int(data[2])
+        wagons[index] += value
 
-####################################################
+    elif data[0] == 'leave':
+        index = int(data[1])
+        value = int(data[2])
+        wagons[index] -= value
 
-# MAIN BODY
+    command = input()
 
-for item in collection_of_items:
-    type_of_item, price = item.split('->')
-    price = float(price)
 
-    if type_of_item == 'Clothes' and price > 50.00:
-        continue
-    elif type_of_item == 'Shoes' and price > 35.00:
-        continue
-    elif type_of_item == 'Accessories' and price > 20.50:
-        continue
-
-    if budget >= price:
-        budget -= price
-        new = price * 0.4
-        profit += new
-        new_prices.append(price + new)
-
-#################################################################
-
-# PRINT
-
-for el in new_prices:
-    print(f'{el:.2f}', end=' ')
-
-print()
-print(f'Profit: {profit:.2f}')
-
-if (sum(new_prices) + budget) >= 150:
-    print('Hello, France!')
-else:
-    print('Time to go.')
-
+print(wagons)
