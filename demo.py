@@ -3,38 +3,24 @@ current_state = list(map(lambda x: int(x), input().split()))
 
 ###########################################
 
-queue = people_waiting
-to_add = 0
-new_value = 0
+MAX_SEATS = 4
 
 ###########################################
 
 
-for index in range(0, len(current_state)):
-    if queue >= 4:
-        if current_state[index] < 4:
-            to_add = 4 - current_state[index]
-            new_value = current_state[index] + to_add
-            current_state.insert(index, new_value)
-            current_state.pop(index+1)
-            queue -= to_add
+for index in range(len(current_state)):
+    while not current_state[index] == MAX_SEATS:
+        if people_waiting > 0:
+            current_state[index] += 1
+            people_waiting -= 1
         else:
-            pass
-    else:
-        to_add = queue
-        current_state.insert(index, to_add)
-        current_state.pop(index+1)
+            break
 
-if sum(current_state) < people_waiting:
-    if queue <= 0:
-        print(' '.join(str(x) for x in current_state))
-    else:
-        print(f"There isn't enough space! {queue} people in a queue!")
-        print(' '.join(str(x) for x in current_state))
+all_seats = len(current_state) * MAX_SEATS
+taken = sum(current_state)
 
-else:
-    if queue <= 0:
-        print(''.join(current_state))
-    else:
-        print("The lift has empty spots!")
-        print(' '.join(str(x) for x in current_state))
+if people_waiting == 0 and taken < all_seats:
+    print("The lift has empty spots!")
+elif people_waiting > 0 and taken == all_seats:
+    print(f"There isn't enough space! {people_waiting} people in a queue!")
+print(' '.join(str(x) for x in current_state))
