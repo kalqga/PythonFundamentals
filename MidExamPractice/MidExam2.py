@@ -3,6 +3,7 @@ initial_loot = input().split('|')
 new_loot = initial_loot.copy()
 data = input()
 stolen_loot = []
+asd = 0
 
 
 ##############################################
@@ -17,10 +18,10 @@ def loot(command_list, other_list):
 
 
 def drop(command_list, other_list):
-    index = int(command_list[1])
-    if 0 <= index < len(other_list):
-        other_list.append(other_list[index])
-        other_list.pop(index)
+    count = int(command_list[1])
+    if 0 <= count < len(other_list):
+        other_list.append(other_list[count])
+        other_list.pop(count)
     else:
         pass
 
@@ -40,8 +41,6 @@ while data != 'Yohoho!':
             stolen_loot = new_loot.copy()
             new_loot.clear()
             print(', '.join(stolen_loot))
-        elif index < 0:
-            pass
         else:
             for i in range(len(new_loot) - index, len(new_loot)):
                 stolen_loot.append(new_loot[i])
@@ -51,12 +50,10 @@ while data != 'Yohoho!':
 
     data = input()
 
-asd = 0
 
-for word in new_loot:
-    asd += len(word)
-
-if len(new_loot) > 0:
-    print(f"Average treasure gain: {asd / len(new_loot):.2f} pirate credits.")
-else:
+if len(new_loot) <= 0:
     print("Failed treasure hunt.")
+else:
+    for word in new_loot:
+        asd += len(word)
+    print(f"Average treasure gain: {asd / len(new_loot):.2f} pirate credits.")

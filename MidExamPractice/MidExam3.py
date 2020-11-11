@@ -13,12 +13,10 @@ def add(card, deck):
 
 
 def insert(card, index, deck):
-    if card in all_cards:
+    if card in all_cards and 0 <= int(index) < len(deck):
         for i in range(0, len(deck)):
             if i == int(index):
                 deck.insert(i, card)
-            elif 0 > int(index) or int(index) >= len(deck):
-                print('Error!')
     else:
         print('Error!')
 
@@ -38,7 +36,6 @@ def swap(card1, card2, deck):
         elif deck[index] == card2:
             deck.insert(index, card1)
             deck.pop(index + 1)
-
 
 
 while not data == "Ready":
